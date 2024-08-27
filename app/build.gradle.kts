@@ -1,10 +1,10 @@
-import org.jetbrains.kotlin.compose.compiler.gradle.ComposeFeatureFlag
+import com.android.build.gradle.internal.cxx.configure.gradleLocalProperties
 
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.google.ksp)
-//    alias(libs.plugins.google.dagger.hilt.android)
+    alias(libs.plugins.google.dagger.hilt.android)
     alias(libs.plugins.jetbrains.kotlin.serialization)
     alias(libs.plugins.compose.compiler)
 }
@@ -24,6 +24,13 @@ android {
         vectorDrawables {
             useSupportLibrary = true
         }
+
+        val apiUrl = gradleLocalProperties(rootDir, providers).getProperty("BACKEND_URL")
+        buildConfigField(type = "String", name = "BACKEND_URL", value = apiUrl)
+    }
+
+    buildFeatures {
+        buildConfig = true
     }
 
     buildTypes {
@@ -52,7 +59,6 @@ android {
     }
     composeCompiler {
         stabilityConfigurationFile = rootProject.layout.projectDirectory.file("stability_config.conf")
-        featureFlags.add(ComposeFeatureFlag.StrongSkipping)
     }
 }
 
