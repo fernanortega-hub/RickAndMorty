@@ -7,6 +7,7 @@ plugins {
     alias(libs.plugins.google.dagger.hilt.android)
     alias(libs.plugins.jetbrains.kotlin.serialization)
     alias(libs.plugins.compose.compiler)
+    alias(libs.plugins.realm)
 }
 
 android {
@@ -94,5 +95,5 @@ dependencies {
     implementation(libs.squareup.retrofit2.retrofit)
     implementation(libs.squareup.retrofit2.converter.kotlinserialization)
 
-
+    implementation(libs.realm.librarybase)
 }
