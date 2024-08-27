@@ -1,0 +1,59 @@
+package com.fernanortega.rickandmorty.data.network.model
+
+import com.fernanortega.rickandmorty.data.model.Character
+import com.fernanortega.rickandmorty.data.model.LocationCharacter
+import com.fernanortega.rickandmorty.data.model.OriginCharacter
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
+
+@Serializable
+data class NetworkCharacter(
+    @SerialName("id") val id: Int,
+    @SerialName("name") val name: String,
+    @SerialName("status") val status: String,
+    @SerialName("species") val species: String,
+    @SerialName("type") val type: String,
+    @SerialName("gender") val gender: String,
+    @SerialName("origin") val origin: NetworkOriginCharacter,
+    @SerialName("location") val location: NetworkLocationCharacter,
+    @SerialName("image") val image: String,
+    @SerialName("episode") val episode: List<String>,
+    @SerialName("url") val url: String,
+    @SerialName("created") val created: String
+) {
+    fun toModel(): Character = Character(
+        id = id,
+        name = name,
+        status = status,
+        species = species,
+        type = type,
+        gender = gender,
+        origin = origin.toModel(),
+        location = location.toModel(),
+        image = image,
+        episode = episode,
+        url = url,
+        created = created
+
+    )
+}
+
+@Serializable
+data class NetworkLocationCharacter(
+    @SerialName("name") val name: String,
+    @SerialName("url") val url: String
+) {
+    fun toModel(): LocationCharacter = LocationCharacter(
+        name = name, url = url
+    )
+}
+
+@Serializable
+data class NetworkOriginCharacter(
+    @SerialName("name") val name: String,
+    @SerialName("url") val url: String
+){
+    fun toModel(): OriginCharacter = OriginCharacter(
+        name = name, url = url
+    )
+}

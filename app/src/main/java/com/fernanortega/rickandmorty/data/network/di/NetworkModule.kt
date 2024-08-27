@@ -1,4 +1,4 @@
-package com.fernanortega.rickandmorty.core.network.di
+package com.fernanortega.rickandmorty.data.network.di
 
 import dagger.Module
 import dagger.Provides

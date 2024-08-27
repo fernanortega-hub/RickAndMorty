@@ -1,6 +1,7 @@
-package com.fernanortega.rickandmorty.core.network.di
+package com.fernanortega.rickandmorty.data.network.di
 
 import com.fernanortega.rickandmorty.BuildConfig
+import com.fernanortega.rickandmorty.data.network.services.character.CharacterService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -26,4 +27,10 @@ object RetrofitModule {
         )
         .build()
 
+
+    @Provides
+    @Singleton
+    fun providesCharacterService(
+        retrofit: Retrofit
+    ): CharacterService = retrofit.create(CharacterService::class.java)
 }
