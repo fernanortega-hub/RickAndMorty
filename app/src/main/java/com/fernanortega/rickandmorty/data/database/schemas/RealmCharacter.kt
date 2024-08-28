@@ -23,6 +23,7 @@ class RealmCharacter : RealmObject {
     var image: String = ""
     var episode: RealmList<String> = realmListOf()
     var url: String = ""
+    var inPage: Int = 0
 
     fun toModel(): Character = Character(
         id = id,

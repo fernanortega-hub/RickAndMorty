@@ -6,5 +6,6 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class GetCharactersResponse(
+    @SerialName("info") val info: NetworkPaginationInfo,
     @SerialName("results") val results: List<NetworkCharacter>?
 )

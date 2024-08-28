@@ -1,9 +1,9 @@
 package com.fernanortega.rickandmorty.data.repository
 
+import androidx.paging.PagingData
 import com.fernanortega.rickandmorty.data.model.Character
 import kotlinx.coroutines.flow.Flow
 
 interface CharacterRepository {
-    fun getAllCharacters(): Flow<List<Character>>
-    suspend fun refreshCharactersFromNetwork(): Result<Unit>
+    fun getAllCharacters(): Flow<PagingData<Character>>
 }

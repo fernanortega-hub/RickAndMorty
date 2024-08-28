@@ -8,7 +8,7 @@ import retrofit2.http.Query
 interface CharacterService {
 
     @GET("character")
-    suspend fun getAllCharacters(): Response<GetCharactersResponse>
+    suspend fun getCharactersAtPage(@Query("page") page: Int): Response<GetCharactersResponse>
 
     @GET("character/")
     suspend fun filterCharactersByName(@Query("name") name: String): Response<GetCharactersResponse?>

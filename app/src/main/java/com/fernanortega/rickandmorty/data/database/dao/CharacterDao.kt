@@ -5,6 +5,7 @@ import io.realm.kotlin.Realm
 import io.realm.kotlin.UpdatePolicy
 import io.realm.kotlin.ext.query
 import io.realm.kotlin.notifications.ResultsChange
+import io.realm.kotlin.query.RealmResults
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -17,7 +18,9 @@ class CharacterDao @Inject constructor(
         copyToRealm(character, UpdatePolicy.ALL)
     }
 
-    fun getAllCharacters(): Flow<ResultsChange<RealmCharacter>> = realm.query<RealmCharacter>().asFlow()
-
     fun filterCharactersByName(name: String): Flow<ResultsChange<RealmCharacter>> = realm.query<RealmCharacter>("name CONTAINS $0", name).asFlow()
+
+    fun getCharactersAtPage(page: Int): RealmResults<RealmCharacter> = realm.query<RealmCharacter>(
+        "inPage == $0", page
+    ).find()
 }

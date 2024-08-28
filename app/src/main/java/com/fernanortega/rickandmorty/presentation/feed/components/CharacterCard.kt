@@ -84,19 +84,9 @@ fun CharacterCard(
                     character.location.name
                 )
             )
-            val episodesText = buildString {
-                append(
-                    when (character.gender) {
-                        "Male" -> stringResource(R.string.he)
-                        "Female" -> stringResource(R.string.she)
-                        else -> ""
-                    }
-                )
-                append(" ${stringResource(R.string.appears_in_episodes, character.episode.size)}")
-            }
 
             Text(
-                text = episodesText.trim().replaceFirstChar { it.uppercase() }
+                text = stringResource(R.string.appears_in_episodes, character.episode.size)
             )
         }
     }
