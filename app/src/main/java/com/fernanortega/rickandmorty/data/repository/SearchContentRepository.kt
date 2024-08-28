@@ -1,6 +1,6 @@
 package com.fernanortega.rickandmorty.data.repository
 
-import com.fernanortega.rickandmorty.data.model.SearchContent
+import com.fernanortega.rickandmorty.domain.model.SearchContent
 import kotlinx.coroutines.flow.Flow
 
 interface SearchContentRepository {

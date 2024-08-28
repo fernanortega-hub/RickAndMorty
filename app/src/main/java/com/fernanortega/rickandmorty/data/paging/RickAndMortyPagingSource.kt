@@ -4,7 +4,7 @@ import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.fernanortega.rickandmorty.common.BackendException
 import com.fernanortega.rickandmorty.data.database.dao.CharacterDao
-import com.fernanortega.rickandmorty.data.model.Character
+import com.fernanortega.rickandmorty.domain.model.Character
 import com.fernanortega.rickandmorty.data.network.services.character.CharacterService
 
 class RickAndMortyPagingSource(

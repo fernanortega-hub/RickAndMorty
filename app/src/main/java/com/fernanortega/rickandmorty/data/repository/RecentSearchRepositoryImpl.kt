@@ -4,7 +4,7 @@ import com.fernanortega.rickandmorty.common.AppDispatchers
 import com.fernanortega.rickandmorty.common.Dispatcher
 import com.fernanortega.rickandmorty.data.database.dao.RecentSearchDao
 import com.fernanortega.rickandmorty.data.database.schemas.RealmRecentSearch
-import com.fernanortega.rickandmorty.data.model.RecentSearch
+import com.fernanortega.rickandmorty.domain.model.RecentSearch
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map

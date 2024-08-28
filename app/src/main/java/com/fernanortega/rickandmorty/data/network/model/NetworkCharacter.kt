@@ -3,9 +3,9 @@ package com.fernanortega.rickandmorty.data.network.model
 import com.fernanortega.rickandmorty.data.database.schemas.RealmCharacter
 import com.fernanortega.rickandmorty.data.database.schemas.RealmLocationCharacter
 import com.fernanortega.rickandmorty.data.database.schemas.RealmOriginCharacter
-import com.fernanortega.rickandmorty.data.model.Character
-import com.fernanortega.rickandmorty.data.model.LocationCharacter
-import com.fernanortega.rickandmorty.data.model.OriginCharacter
+import com.fernanortega.rickandmorty.domain.model.Character
+import com.fernanortega.rickandmorty.domain.model.LocationCharacter
+import com.fernanortega.rickandmorty.domain.model.OriginCharacter
 import io.realm.kotlin.ext.toRealmList
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

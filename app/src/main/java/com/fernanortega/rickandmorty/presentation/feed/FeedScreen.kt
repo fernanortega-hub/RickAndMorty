@@ -18,7 +18,7 @@ import androidx.compose.ui.unit.dp
 import androidx.paging.LoadState
 import androidx.paging.compose.LazyPagingItems
 import com.fernanortega.rickandmorty.R
-import com.fernanortega.rickandmorty.data.model.Character
+import com.fernanortega.rickandmorty.domain.model.Character
 import com.fernanortega.rickandmorty.presentation.components.EmptyScreen
 import com.fernanortega.rickandmorty.presentation.components.PullToRefreshContainer
 import com.fernanortega.rickandmorty.presentation.feed.components.CharacterCard

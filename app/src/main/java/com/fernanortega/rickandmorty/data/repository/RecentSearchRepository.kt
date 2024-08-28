@@ -1,6 +1,6 @@
 package com.fernanortega.rickandmorty.data.repository
 
-import com.fernanortega.rickandmorty.data.model.RecentSearch
+import com.fernanortega.rickandmorty.domain.model.RecentSearch
 import kotlinx.coroutines.flow.Flow
 
 interface RecentSearchRepository {

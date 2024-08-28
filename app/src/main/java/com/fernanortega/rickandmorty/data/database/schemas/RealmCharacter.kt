@@ -1,8 +1,8 @@
 package com.fernanortega.rickandmorty.data.database.schemas
 
-import com.fernanortega.rickandmorty.data.model.Character
-import com.fernanortega.rickandmorty.data.model.LocationCharacter
-import com.fernanortega.rickandmorty.data.model.OriginCharacter
+import com.fernanortega.rickandmorty.domain.model.Character
+import com.fernanortega.rickandmorty.domain.model.LocationCharacter
+import com.fernanortega.rickandmorty.domain.model.OriginCharacter
 import io.realm.kotlin.ext.realmListOf
 import io.realm.kotlin.types.EmbeddedRealmObject
 import io.realm.kotlin.types.RealmInstant

@@ -1,7 +1,7 @@
 package com.fernanortega.rickandmorty.data.repository
 
 import androidx.paging.PagingData
-import com.fernanortega.rickandmorty.data.model.Character
+import com.fernanortega.rickandmorty.domain.model.Character
 import kotlinx.coroutines.flow.Flow
 
 interface CharacterRepository {

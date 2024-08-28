@@ -4,7 +4,7 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import com.fernanortega.rickandmorty.data.database.dao.CharacterDao
-import com.fernanortega.rickandmorty.data.model.Character
+import com.fernanortega.rickandmorty.domain.model.Character
 import com.fernanortega.rickandmorty.data.network.services.character.CharacterService
 import com.fernanortega.rickandmorty.data.paging.RickAndMortyPagingSource
 import kotlinx.coroutines.flow.Flow

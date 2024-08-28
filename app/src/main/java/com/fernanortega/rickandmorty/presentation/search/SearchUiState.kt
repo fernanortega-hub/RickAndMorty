@@ -1,7 +1,7 @@
 package com.fernanortega.rickandmorty.presentation.search
 
-import com.fernanortega.rickandmorty.data.model.Character
-import com.fernanortega.rickandmorty.data.model.RecentSearch
+import com.fernanortega.rickandmorty.domain.model.RecentSearch
+import com.fernanortega.rickandmorty.domain.model.SearchContent
 
 data class SearchUiState(
     val searchQuery: String = "",

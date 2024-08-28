@@ -23,7 +23,7 @@ import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.fernanortega.rickandmorty.R
-import com.fernanortega.rickandmorty.data.model.RecentSearch
+import com.fernanortega.rickandmorty.domain.model.RecentSearch
 import com.fernanortega.rickandmorty.presentation.components.EmptyScreen
 import com.fernanortega.rickandmorty.ui.theme.RickAndMortyTheme
 

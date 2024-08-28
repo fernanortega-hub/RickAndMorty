@@ -1,4 +1,4 @@
-package com.fernanortega.rickandmorty.data.model
+package com.fernanortega.rickandmorty.domain.model
 
 data class SearchContent(
     val characters: List<Character>,
