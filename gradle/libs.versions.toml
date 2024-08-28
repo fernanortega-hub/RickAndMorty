@@ -16,6 +16,7 @@ hiltCompose = "1.2.0"
 retrofit = "2.11.0"
 kotlinDateTime = "0.6.1"
 realm = "2.0.0"
+paging = "3.3.2"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -42,6 +43,8 @@ androidx-hilt-navigationcompose = { group = "androidx.hilt", name = "hilt-naviga
 squareup-retrofit2-retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
 squareup-retrofit2-converter-kotlinserialization = { group = "com.squareup.retrofit2", name = "converter-kotlinx-serialization", version.ref = "retrofit" }
 realm-librarybase = { group = "io.realm.kotlin", name = "library-base", version.ref = "realm" }
+androidx-paging-runtime = { group = "androidx.paging", name = "paging-runtime-ktx", version.ref="paging" }
+androidx-paging-compose = { group = "androidx.paging", name = "paging-compose", version.ref="paging" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

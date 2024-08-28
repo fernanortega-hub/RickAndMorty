@@ -96,4 +96,6 @@ dependencies {
     implementation(libs.squareup.retrofit2.converter.kotlinserialization)
 
     implementation(libs.realm.librarybase)
+    implementation(libs.androidx.paging.runtime)
+    implementation(libs.androidx.paging.compose)
 }
