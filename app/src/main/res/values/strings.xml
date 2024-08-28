@@ -7,4 +7,9 @@
     <string name="she">She</string>
     <string name="appears_in_episodes">" appears in %1$s episodes"</string>
     <string name="first_appeared_in_and_last_known_location_is">%1$s first appeared in %2$s and last known location is %3$s.</string>
+    <string name="back">Back</string>
+    <string name="search_characters_locations_or_episodes">Search characters, locations or episodes</string>
+    <string name="activate_search_bar">Activate search bar</string>
+    <string name="clear_search">Clear search</string>
+    <string name="deactivate_search">Deactivate search</string>
 </resources>

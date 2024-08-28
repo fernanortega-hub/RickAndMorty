@@ -7,4 +7,5 @@ sealed class Routes(
     val arguments: List<NamedNavArgument> = emptyList()
 ) {
     data object Feed: Routes("feed")
+    data object Search: Routes("search")
 }

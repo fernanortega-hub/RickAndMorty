@@ -3,23 +3,24 @@ package com.fernanortega.rickandmorty.presentation.navigation
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.rememberNavController
 import com.fernanortega.rickandmorty.presentation.feed.feedRoute
 import com.fernanortega.rickandmorty.presentation.search.searchRoute
 
 @Composable
 fun RickAndMortyNavHost(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    navController: NavHostController
 ) {
-    val navController = rememberNavController()
-
     NavHost(
         modifier = modifier.fillMaxSize(),
         navController = navController,
         startDestination = Routes.Feed.route
     ) {
         feedRoute()
-        searchRoute()
+        searchRoute(
+            onBack = navController::navigateUp
+        )
     }
 }
