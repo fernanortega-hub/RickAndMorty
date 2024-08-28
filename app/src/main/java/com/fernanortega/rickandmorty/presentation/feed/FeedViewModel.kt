@@ -26,6 +26,9 @@ class FeedViewModel @Inject constructor(
     )
     val uiState: StateFlow<FeedUiState> =
         combine(_uiState, getAllCharactersUseCase()) { uiState, characters ->
+            if (characters.isEmpty()) {
+                refreshCharacters()
+            }
             uiState.copy(
                 characters = characters
             )
@@ -34,12 +37,6 @@ class FeedViewModel @Inject constructor(
             started = SharingStarted.WhileSubscribed(5_000),
             initialValue = _uiState.value
         )
-
-    init {
-        if (_uiState.value.characters.isEmpty()) {
-            refreshCharacters()
-        }
-    }
 
     fun refreshCharacters() {
         viewModelScope.launch {
