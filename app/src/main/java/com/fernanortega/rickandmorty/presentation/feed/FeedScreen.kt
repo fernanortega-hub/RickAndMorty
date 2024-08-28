@@ -1,19 +1,23 @@
 package com.fernanortega.rickandmorty.presentation.feed
 
-import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material3.Text
+import androidx.compose.foundation.lazy.staggeredgrid.LazyVerticalStaggeredGrid
+import androidx.compose.foundation.lazy.staggeredgrid.StaggeredGridCells
+import androidx.compose.foundation.lazy.staggeredgrid.items
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import coil.ImageLoader
-import coil.compose.AsyncImage
-import coil.request.ImageRequest
+import com.fernanortega.rickandmorty.R
+import com.fernanortega.rickandmorty.presentation.components.EmptyScreen
 import com.fernanortega.rickandmorty.presentation.components.PullToRefreshContainer
+import com.fernanortega.rickandmorty.presentation.feed.components.CharacterCard
 
 @Composable
 fun FeedScreen(
@@ -27,29 +31,27 @@ fun FeedScreen(
         onRefresh = onRefresh
     ) {
         if (uiState.characters.isEmpty()) {
-            Text(text = "No characters found")
+            EmptyScreen(
+                text = stringResource(R.string.no_characters_found),
+                modifier = Modifier.align(Alignment.Center)
+            )
         } else {
-            val context = LocalContext.current
-            LazyColumn(
-                modifier = modifier
+            LazyVerticalStaggeredGrid(
+                modifier = modifier,
+                contentPadding = PaddingValues(16.dp),
+                columns = StaggeredGridCells.Adaptive(300.dp),
+                verticalItemSpacing = 12.dp,
+                horizontalArrangement = Arrangement.spacedBy(12.dp)
             ) {
                 items(
-                    uiState.characters,
+                    items = uiState.characters,
                     key = { it.id }
-                ) {
-                    Column(
-                        modifier = Modifier.fillParentMaxWidth()
-                    ) {
-                        Text(
-                            text = it.name
-                        )
-                        AsyncImage(
-                            model = ImageRequest.Builder(context).data(it.image).build(),
-                            contentDescription = "Imagen de ${it.name}",
-                            imageLoader = ImageLoader(context),
-                            modifier = Modifier.width(300.dp)
-                        )
-                    }
+                ) { character ->
+                    CharacterCard(
+                        modifier = Modifier
+                            .fillMaxWidth(),
+                        character = character
+                    )
                 }
             }
         }

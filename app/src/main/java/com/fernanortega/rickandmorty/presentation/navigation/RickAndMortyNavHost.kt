@@ -6,6 +6,7 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
 import com.fernanortega.rickandmorty.presentation.feed.feedRoute
+import com.fernanortega.rickandmorty.presentation.search.searchRoute
 
 @Composable
 fun RickAndMortyNavHost(
@@ -19,5 +20,6 @@ fun RickAndMortyNavHost(
         startDestination = Routes.Feed.route
     ) {
         feedRoute()
+        searchRoute()
     }
 }

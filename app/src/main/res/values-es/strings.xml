@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="no_characters_found">No se encontraron personajes</string>
+    <string name="image_of_character">Imagen del personaje %1$s</string>
+    <string name="he">Él</string>
+    <string name="she">Ella</string>
+    <string name="appears_in_episodes">aparece en %1$s episodios</string>
+    <string name="first_appeared_in_and_last_known_location_is">%1$s apareció por primera vez en %2$s y su última ubicación conocida %3$s.</string>
+</resources>
