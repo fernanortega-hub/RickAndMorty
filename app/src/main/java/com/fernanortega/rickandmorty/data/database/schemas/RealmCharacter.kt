@@ -5,13 +5,14 @@ import com.fernanortega.rickandmorty.data.model.LocationCharacter
 import com.fernanortega.rickandmorty.data.model.OriginCharacter
 import io.realm.kotlin.ext.realmListOf
 import io.realm.kotlin.types.EmbeddedRealmObject
+import io.realm.kotlin.types.RealmInstant
 import io.realm.kotlin.types.RealmList
 import io.realm.kotlin.types.RealmObject
 import io.realm.kotlin.types.annotations.PrimaryKey
 
 class RealmCharacter : RealmObject {
     @PrimaryKey
-    var _id: Int = 0
+    var id: Int = 0
     var name: String = ""
     var status: String = ""
     var species: String = ""
@@ -22,10 +23,9 @@ class RealmCharacter : RealmObject {
     var image: String = ""
     var episode: RealmList<String> = realmListOf()
     var url: String = ""
-    var created: String = ""
 
     fun toModel(): Character = Character(
-        id = _id,
+        id = id,
         name = name,
         status = status,
         species = species,
@@ -35,9 +35,7 @@ class RealmCharacter : RealmObject {
         location = location?.toModel() ?: LocationCharacter("", ""),
         image = image,
         episode = episode,
-        url = url,
-        created = created
-
+        url = url
     )
 }
 
@@ -47,11 +45,6 @@ class RealmOriginCharacter : EmbeddedRealmObject {
         url = url
     )
 
-//    constructor(name: String, url: String) : this() {
-//        this.name = name
-//        this.url = url
-//    }
-
     var name: String = ""
     var url: String = ""
 }
@@ -59,11 +52,6 @@ class RealmOriginCharacter : EmbeddedRealmObject {
 class RealmLocationCharacter : EmbeddedRealmObject {
     var name: String = ""
     var url: String = ""
-
-//    constructor(name: String, url: String) : this() {
-//        this.name = name
-//        this.url = url
-//    }
 
     fun toModel(): LocationCharacter = LocationCharacter(
         name = name,

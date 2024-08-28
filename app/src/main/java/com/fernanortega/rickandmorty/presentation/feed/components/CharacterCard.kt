@@ -140,8 +140,7 @@ private fun CharacterCardPreview() {
                 ),
                 image = "https://rickandmortyapi.com/api/character/avatar/1.jpeg",
                 episode = listOf(),
-                url = "",
-                created = "2017-11-04T18:48:46.250Z"
+                url = ""
             ),
         )
     }

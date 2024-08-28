@@ -18,4 +18,6 @@ class CharacterDao @Inject constructor(
     }
 
     fun getAllCharacters(): Flow<ResultsChange<RealmCharacter>> = realm.query<RealmCharacter>().asFlow()
+
+    fun filterCharactersByName(name: String): Flow<ResultsChange<RealmCharacter>> = realm.query<RealmCharacter>("name CONTAINS $0", name).asFlow()
 }

@@ -5,6 +5,6 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class AllCharacterResponse(
+data class GetCharactersResponse(
     @SerialName("results") val results: List<NetworkCharacter>?
 )

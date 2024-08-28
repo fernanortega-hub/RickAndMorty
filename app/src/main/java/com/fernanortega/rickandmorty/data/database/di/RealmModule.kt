@@ -3,6 +3,7 @@ package com.fernanortega.rickandmorty.data.database.di
 import com.fernanortega.rickandmorty.data.database.schemas.RealmCharacter
 import com.fernanortega.rickandmorty.data.database.schemas.RealmLocationCharacter
 import com.fernanortega.rickandmorty.data.database.schemas.RealmOriginCharacter
+import com.fernanortega.rickandmorty.data.database.schemas.RealmRecentSearch
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -20,7 +21,8 @@ object RealmModule {
         schema = setOf(
             RealmCharacter::class,
             RealmLocationCharacter::class,
-            RealmOriginCharacter::class
+            RealmOriginCharacter::class,
+            RealmRecentSearch::class
         )
     )
         .name("rickAndMortyDb.realm")

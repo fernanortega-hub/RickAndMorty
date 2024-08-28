@@ -3,7 +3,11 @@ package com.fernanortega.rickandmorty.presentation.search
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.basicMarquee
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.imePadding
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.rounded.ArrowBack
 import androidx.compose.material.icons.rounded.Clear
@@ -21,7 +25,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import com.fernanortega.rickandmorty.R
+import com.fernanortega.rickandmorty.presentation.search.components.RecentSearches
 import com.fernanortega.rickandmorty.ui.theme.RickAndMortyTheme
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
@@ -31,12 +37,13 @@ fun SearchScreen(
     uiState: SearchUiState,
     onBack: () -> Unit,
     onQueryChange: (String) -> Unit,
-    onExplicitlySearch: (String) -> Unit
+    onExplicitlySearch: (String) -> Unit,
+    clearRecentSearches: () -> Unit
 ) {
-    Box(
+    Column(
         modifier = modifier
             .fillMaxSize(),
-        contentAlignment = Alignment.TopCenter
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
         var active by remember { mutableStateOf(false) }
         val onActiveChange = remember {
@@ -79,7 +86,25 @@ fun SearchScreen(
                 }
             }
         ) {
+            RecentSearches(
+                recentSearches = uiState.recentSearches,
+                clearRecentSearches = clearRecentSearches,
+                onSearch = onQueryChange,
+                modifier = Modifier
+                    .weight(1f)
+                    .fillMaxWidth()
+                    .imePadding()
+            )
+        }
 
+        if (!active) {
+            RecentSearches(
+                recentSearches = uiState.recentSearches,
+                clearRecentSearches = clearRecentSearches,
+                onSearch = onQueryChange,
+                modifier = Modifier
+                    .weight(1f)
+            )
         }
     }
 }
@@ -94,7 +119,8 @@ private fun SearchScreenPreview() {
             ),
             onBack = {},
             onQueryChange = {},
-            onExplicitlySearch = {}
+            onExplicitlySearch = {},
+            clearRecentSearches = {}
         )
     }
 }

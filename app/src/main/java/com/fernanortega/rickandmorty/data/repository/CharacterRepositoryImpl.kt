@@ -1,5 +1,6 @@
 package com.fernanortega.rickandmorty.data.repository
 
+import android.util.Log
 import com.fernanortega.rickandmorty.common.AppDispatchers
 import com.fernanortega.rickandmorty.common.BackendException
 import com.fernanortega.rickandmorty.common.Dispatcher
@@ -11,7 +12,6 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
-
 
 class CharacterRepositoryImpl @Inject constructor(
     private val characterService: CharacterService,
@@ -40,5 +40,5 @@ class CharacterRepositoryImpl @Inject constructor(
             }
         }
     }
-
 }
+

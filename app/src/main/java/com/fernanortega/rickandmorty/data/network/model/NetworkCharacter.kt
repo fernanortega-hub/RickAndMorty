@@ -22,8 +22,7 @@ data class NetworkCharacter(
     @SerialName("location") val location: NetworkLocationCharacter,
     @SerialName("image") val image: String,
     @SerialName("episode") val episode: List<String>,
-    @SerialName("url") val url: String,
-    @SerialName("created") val created: String
+    @SerialName("url") val url: String
 ) {
     fun toModel(): Character = Character(
         id = id,
@@ -36,13 +35,11 @@ data class NetworkCharacter(
         location = location.toModel(),
         image = image,
         episode = episode,
-        url = url,
-        created = created
-
+        url = url
     )
 
     fun toRealmModel(): RealmCharacter = RealmCharacter().apply {
-        _id = id
+        id = this@NetworkCharacter.id
         name = this@NetworkCharacter.name
         status = this@NetworkCharacter.status
         species = this@NetworkCharacter.species
@@ -59,7 +56,6 @@ data class NetworkCharacter(
         image = this@NetworkCharacter.image
         episode = this@NetworkCharacter.episode.toRealmList()
         url = this@NetworkCharacter.url
-        created = this@NetworkCharacter.created
     }
 }
 

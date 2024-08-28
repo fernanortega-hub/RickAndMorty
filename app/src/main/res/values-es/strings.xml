@@ -11,4 +11,8 @@
     <string name="activate_search_bar">Activate search bar</string>
     <string name="clear_search">Clear search</string>
     <string name="deactivate_search">Deactivate search</string>
+    <string name="search_query">Search %1$s</string>
+    <string name="recent_searches">Recent searches</string>
+    <string name="clear_recent_searches">Clear recent searches</string>
+    <string name="no_recent_searches">No recent searches</string>
 </resources>

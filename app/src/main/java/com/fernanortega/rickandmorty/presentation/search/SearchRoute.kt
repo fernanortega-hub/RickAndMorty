@@ -18,6 +18,7 @@ fun NavGraphBuilder.searchRoute(
             onBack = onBack,
             onQueryChange = viewModel::onSearchQueryChange,
             onExplicitlySearch = viewModel::onExplicitlySearch,
+            clearRecentSearches = viewModel::clearRecentSearches
         )
     }
 }
