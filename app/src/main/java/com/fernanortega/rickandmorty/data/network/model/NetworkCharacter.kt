@@ -1,8 +1,12 @@
 package com.fernanortega.rickandmorty.data.network.model
 
+import com.fernanortega.rickandmorty.data.database.schemas.RealmCharacter
+import com.fernanortega.rickandmorty.data.database.schemas.RealmLocationCharacter
+import com.fernanortega.rickandmorty.data.database.schemas.RealmOriginCharacter
 import com.fernanortega.rickandmorty.data.model.Character
 import com.fernanortega.rickandmorty.data.model.LocationCharacter
 import com.fernanortega.rickandmorty.data.model.OriginCharacter
+import io.realm.kotlin.ext.toRealmList
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -36,6 +40,27 @@ data class NetworkCharacter(
         created = created
 
     )
+
+    fun toRealmModel(): RealmCharacter = RealmCharacter().apply {
+        _id = id
+        name = this@NetworkCharacter.name
+        status = this@NetworkCharacter.status
+        species = this@NetworkCharacter.species
+        type = this@NetworkCharacter.type
+        gender = this@NetworkCharacter.gender
+        origin = RealmOriginCharacter().apply {
+            name = this@NetworkCharacter.origin.name
+            url = this@NetworkCharacter.origin.url
+        }
+        location = RealmLocationCharacter().apply {
+            name = this@NetworkCharacter.location.name
+            url = this@NetworkCharacter.location.url
+        }
+        image = this@NetworkCharacter.image
+        episode = this@NetworkCharacter.episode.toRealmList()
+        url = this@NetworkCharacter.url
+        created = this@NetworkCharacter.created
+    }
 }
 
 @Serializable
