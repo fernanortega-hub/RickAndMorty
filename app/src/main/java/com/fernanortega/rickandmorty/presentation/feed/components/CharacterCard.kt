@@ -51,9 +51,10 @@ fun CharacterCard(
                 text = character.status,
                 modifier = Modifier
                     .align(Alignment.TopEnd)
-                    .padding(top = 12.dp, bottom = 12.dp, end = 12.dp, start = 32.dp)
+                    .padding(top = 8.dp, bottom = 8.dp, end = 8.dp, start = 24.dp)
                     .background(MaterialTheme.colorScheme.background, MaterialTheme.shapes.small)
-                    .statusDot(character.status)
+                    .statusDot(character.status),
+                style = MaterialTheme.typography.labelSmall
             )
         }
         Column(
