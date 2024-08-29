@@ -36,11 +36,15 @@ android {
 
     buildTypes {
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            applicationIdSuffix = ".release"
+            signingConfig = signingConfigs.getByName("debug")
+            isDebuggable = false
+            isShrinkResources = true
         }
     }
     compileOptions {
@@ -96,6 +100,5 @@ dependencies {
     implementation(libs.squareup.retrofit2.converter.kotlinserialization)
 
     implementation(libs.realm.librarybase)
-//    implementation(libs.androidx.paging.runtime)
     implementation(libs.androidx.paging.compose)
 }
