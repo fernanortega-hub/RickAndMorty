@@ -8,6 +8,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.staggeredgrid.LazyVerticalStaggeredGrid
 import androidx.compose.foundation.lazy.staggeredgrid.StaggeredGridCells
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Search
 import androidx.compose.material3.Icon
@@ -28,8 +30,8 @@ import com.fernanortega.rickandmorty.R
 import com.fernanortega.rickandmorty.domain.model.Character
 import com.fernanortega.rickandmorty.presentation.components.EmptyScreen
 import com.fernanortega.rickandmorty.presentation.components.PullToRefreshContainer
-import com.fernanortega.rickandmorty.presentation.feed.components.CharacterCard
 import com.fernanortega.rickandmorty.presentation.components.RickAndMortyTopAppBar
+import com.fernanortega.rickandmorty.presentation.feed.components.CharacterCard
 import com.fernanortega.rickandmorty.presentation.util.showToast
 
 @Composable
@@ -52,7 +54,7 @@ fun FeedScreen(
                     ) {
                         Icon(
                             imageVector = Icons.Rounded.Search,
-                            contentDescription = stringResource(R.string.search_characters_locations_or_episodes),
+                            contentDescription = stringResource(R.string.search_characters),
                         )
                     }
                 }
@@ -71,6 +73,7 @@ fun FeedScreen(
                 EmptyScreen(
                     modifier = Modifier
                         .fillMaxSize()
+                        .verticalScroll(rememberScrollState())
                         .align(Alignment.Center),
                     text = stringResource(id = R.string.no_characters_found),
                 )
@@ -87,7 +90,11 @@ fun FeedScreen(
                         verticalItemSpacing = 12.dp,
                         horizontalArrangement = Arrangement.spacedBy(12.dp)
                     ) {
-                        items(charactersPaging.itemCount) { index ->
+                        items(
+                            count = charactersPaging.itemCount
+                        ) { index ->
+                            // Se usa por index y no peek como la documentacion recomienda por bug desconocido al no reconocer que
+                            // la paginación acabo
                             charactersPaging[index]?.let {
                                 CharacterCard(
                                     character = it,
