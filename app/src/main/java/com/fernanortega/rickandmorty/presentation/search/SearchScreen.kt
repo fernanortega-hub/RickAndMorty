@@ -1,7 +1,6 @@
 package com.fernanortega.rickandmorty.presentation.search
 
-import androidx.compose.foundation.ExperimentalFoundationApi
-import androidx.compose.foundation.basicMarquee
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -10,6 +9,7 @@ import androidx.compose.foundation.layout.imePadding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.rounded.ArrowBack
 import androidx.compose.material.icons.rounded.Clear
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -29,10 +29,11 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.fernanortega.rickandmorty.R
 import com.fernanortega.rickandmorty.presentation.search.components.CharacterResults
+import com.fernanortega.rickandmorty.presentation.search.components.NoCharactersFound
 import com.fernanortega.rickandmorty.presentation.search.components.RecentSearches
 import com.fernanortega.rickandmorty.ui.theme.RickAndMortyTheme
 
-@OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SearchScreen(
     modifier: Modifier = Modifier,
@@ -67,8 +68,7 @@ fun SearchScreen(
                 onActiveChange = { active = it },
                 placeholder = {
                     Text(
-                        text = stringResource(id = R.string.search_characters_locations_or_episodes),
-                        modifier = Modifier.basicMarquee()
+                        text = stringResource(id = R.string.search_characters)
                     )
                 },
                 trailingIcon = {
@@ -93,28 +93,62 @@ fun SearchScreen(
                     }
                 }
             ) {
-                if (uiState.searchContent.characters.isEmpty()) {
-                    RecentSearches(
-                        recentSearches = uiState.recentSearches,
-                        clearRecentSearches = clearRecentSearches,
-                        onSearch = onQueryChange,
+                if (uiState.isSearching) {
+                    Box(
                         modifier = Modifier
-                            .weight(1f)
-                            .fillMaxWidth()
-                            .imePadding()
-                    )
+                            .fillMaxSize()
+                            .imePadding(),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        CircularProgressIndicator()
+                    }
                 } else {
-                    CharacterResults(
-                        characters = uiState.searchContent.characters,
-                        modifier = Modifier
-                            .imePadding()
-                            .fillMaxWidth(),
-                        onCharacterClick = onCharacterClick
-                    )
+                    if (uiState.searchContent.characters.isEmpty() && uiState.searchQuery.length >= 2) {
+                        NoCharactersFound(
+                            query = uiState.searchQuery,
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .imePadding()
+                        )
+                    }
+
+                    if (uiState.searchContent.characters.isEmpty()) {
+                        RecentSearches(
+                            recentSearches = uiState.recentSearches,
+                            clearRecentSearches = clearRecentSearches,
+                            onSearch = onQueryChange,
+                            modifier = Modifier
+                                .fillMaxWidth()
+                        )
+                    } else {
+                        CharacterResults(
+                            characters = uiState.searchContent.characters,
+                            modifier = Modifier
+                                .imePadding()
+                                .fillMaxWidth(),
+                            onCharacterClick = onCharacterClick
+                        )
+                    }
                 }
             }
 
-            if (!active) {
+            if (uiState.isSearching) {
+                Box(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .imePadding(),
+                    contentAlignment = Alignment.Center
+                ) {
+                    CircularProgressIndicator()
+                }
+            } else {
+                if (uiState.searchContent.characters.isEmpty() && uiState.searchQuery.length > 2) {
+                    NoCharactersFound(
+                        query = uiState.searchQuery,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                    )
+                }
                 RecentSearches(
                     recentSearches = uiState.recentSearches,
                     clearRecentSearches = clearRecentSearches,
@@ -127,17 +161,20 @@ fun SearchScreen(
                             else Modifier.heightIn(min = 100.dp)
                         )
                 )
+
+
+                if (uiState.searchContent.characters.isNotEmpty()) {
+                    CharacterResults(
+                        characters = uiState.searchContent.characters,
+                        modifier = Modifier
+                            .weight(1f)
+                            .fillMaxWidth(),
+                        onCharacterClick = onCharacterClick
+                    )
+                }
             }
 
-            if (!active && uiState.searchContent.characters.isNotEmpty()) {
-                CharacterResults(
-                    characters = uiState.searchContent.characters,
-                    modifier = Modifier
-                        .weight(1f)
-                        .fillMaxWidth(),
-                    onCharacterClick = onCharacterClick
-                )
-            }
+
         }
     }
 }

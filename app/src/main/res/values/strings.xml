@@ -5,7 +5,7 @@
     <string name="image_of_character">Image of %1$s</string>
     <string name="origin_in_and_last_known_location_is">%1$s origin is %2$s and last known location is %3$s.</string>
     <string name="back">Back</string>
-    <string name="search_characters_locations_or_episodes">Search characters, locations or episodes</string>
+    <string name="search_characters">Search characters, locations or episodes</string>
     <string name="activate_search_bar">Activate search bar</string>
     <string name="clear_search">Clear search</string>
     <string name="deactivate_search">Deactivate search</string>
@@ -25,6 +25,7 @@
     <string name="has_appeared_in_episode">Has appeared in %1$s episode</string>
     <string name="has_appeared_in_episodes">Has appeared in %1$s episodes</string>
     <string name="share_character">Share character</string>
-    <string name="check_out_this_character">Check out this character</string>
+    <string name="check_out_this_character">Check out this character!</string>
     <string name="characters_results">Character results</string>
+    <string name="for_you_search">For you search</string>
 </resources>

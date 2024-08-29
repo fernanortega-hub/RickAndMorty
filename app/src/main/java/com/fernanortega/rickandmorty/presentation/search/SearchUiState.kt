@@ -11,6 +11,4 @@ data class SearchUiState(
         characters = emptyList()
     ),
     val error: String? = null
-//    val locations: List<Location> = emptyList(),
-//    val episodes: List<Episode> = emptyList()
 )

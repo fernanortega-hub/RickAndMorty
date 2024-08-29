@@ -3,10 +3,12 @@ package com.fernanortega.rickandmorty.presentation.search
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.fernanortega.rickandmorty.common.BackendException
 import com.fernanortega.rickandmorty.domain.ClearRecentSearchesUseCase
 import com.fernanortega.rickandmorty.domain.GetRecentSearchesUseCase
 import com.fernanortega.rickandmorty.domain.GetSearchContentUseCase
 import com.fernanortega.rickandmorty.domain.InsertRecentSearchUseCase
+import com.fernanortega.rickandmorty.domain.model.SearchContent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
@@ -54,16 +56,27 @@ class SearchViewModel @Inject constructor(
         if (query.length >= 2) {
             searchJob?.cancel()
             viewModelScope.launch {
+                _uiState.update { state -> state.copy(isSearching = true) }
                 delay(250)
                 getSearchContentUseCase(query)
                     .onSuccess {
                         _uiState.update { state -> state.copy(searchContent = it) }
                     }
                     .onFailure {
+                        if (it is BackendException) {
+                            _uiState.update { state ->
+                                state.copy(
+                                    searchContent = SearchContent(
+                                        emptyList()
+                                    )
+                                )
+                            }
+                        }
                         _uiState.update { state -> state.copy(error = it.message) }
                     }
             }.also {
                 searchJob = it
+                _uiState.update { state -> state.copy(isSearching = false) }
             }
         }
     }

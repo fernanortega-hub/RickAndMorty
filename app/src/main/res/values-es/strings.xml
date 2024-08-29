@@ -4,7 +4,7 @@
     <string name="image_of_character">Imagen del personaje %1$s</string>
     <string name="origin_in_and_last_known_location_is">%1$s tiene origen en %2$s y su última ubicación conocida es %3$s.</string>
     <string name="back">Atrás</string>
-    <string name="search_characters_locations_or_episodes">Buscar personajes, ubicaciones o episodios</string>
+    <string name="search_characters">Buscar personajes</string>
     <string name="activate_search_bar">Activar barra de búsqueda</string>
     <string name="clear_search">Borrar búsqueda</string>
     <string name="deactivate_search">Desactivar barra de búsqueda</string>
@@ -23,7 +23,8 @@
     <string name="gender_is_unknown_of_the_species">El género de %1$s es desconocido, de la especie %2$s.</string>
     <string name="has_appeared_in_episode">ha aparecido en %1$s episodio</string>
     <string name="has_appeared_in_episodes">Ha aparecido en %1$s episodios</string>
-    <string name="share_character">Share character</string>
-    <string name="check_out_this_character">Check out this character</string>
-    <string name="characters_results">Character results</string>
+    <string name="share_character">Compartir personaje</string>
+    <string name="check_out_this_character">¡Mira este personaje de Rick and Morty!</string>
+    <string name="characters_results">Resultados de personajes</string>
+    <string name="for_you_search">En tu búsqueda de </string>
 </resources>
