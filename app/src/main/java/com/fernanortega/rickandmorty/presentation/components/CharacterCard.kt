@@ -1,4 +1,4 @@
-package com.fernanortega.rickandmorty.presentation.feed.components
+package com.fernanortega.rickandmorty.presentation.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -25,7 +25,6 @@ import com.fernanortega.rickandmorty.R
 import com.fernanortega.rickandmorty.domain.model.Character
 import com.fernanortega.rickandmorty.domain.model.LocationCharacter
 import com.fernanortega.rickandmorty.domain.model.OriginCharacter
-import com.fernanortega.rickandmorty.presentation.components.DynamicImage
 import com.fernanortega.rickandmorty.ui.theme.RickAndMortyTheme
 
 @Composable

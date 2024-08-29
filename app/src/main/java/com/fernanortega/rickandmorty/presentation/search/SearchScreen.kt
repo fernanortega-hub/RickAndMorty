@@ -31,7 +31,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.fernanortega.rickandmorty.R
 import com.fernanortega.rickandmorty.domain.model.Character
-import com.fernanortega.rickandmorty.presentation.feed.components.CharacterCard
+import com.fernanortega.rickandmorty.presentation.components.CharacterCard
 import com.fernanortega.rickandmorty.presentation.search.components.RecentSearches
 import com.fernanortega.rickandmorty.ui.theme.RickAndMortyTheme
 
