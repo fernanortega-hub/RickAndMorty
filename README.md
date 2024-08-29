@@ -28,10 +28,9 @@ Puedes seleccionar una build-variant directamente en la UI de Android Studio ![i
 No necesitas mayor configuración ni requisitos mayores a los mencionados anteriormente, solamente correr el proyecto en un dispositivo Android.
 
 ### Release
-Para esta variante, se requiere de una signing key para su compilación minificada y reobfuscada. Para más información sobre como generar una signing key y usarla para firmar , puedes consultar este [recurso](https://developer.android.com/studio/publish/app-signing?hl=es-419#generate-key) de Android Developers
-> Nota: al seleccionar en la ventana _Generate Signed App Bundle or APK_ selecciona APK, ya que no es posible instalar un Android App Bundle directamete en un dispositivo.
+Para esta variante, se requiere de una signing key para su compilación minificada y reobfuscada. En el caso de este proyecto, tiene por defecto la misma que en modo debug, sin embargo, no se recomienda dejar dicha configuración de esa manera.
+Para más información sobre como generar una signing key y usarla para firmar y subir nuestra app a Play Store, puedes consultar este [recurso](https://developer.android.com/studio/publish/app-signing?hl=es-419#generate-key) de Android Developers.
 
-Con esta configuración y al terminar de firmar nuestra app, puedes correrla directamente en tu dispositivo.
 
 
 
