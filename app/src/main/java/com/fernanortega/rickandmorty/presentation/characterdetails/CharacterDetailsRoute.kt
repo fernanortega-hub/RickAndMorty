@@ -9,15 +9,13 @@ import androidx.navigation.compose.composable
 import com.fernanortega.rickandmorty.presentation.navigation.Routes
 
 const val CHARACTER_ID_KEY = "characterId"
-const val CHARACTER_DEEP_LINK = "https://rickandmortyapi.com/api/character/{$CHARACTER_ID_KEY}"
 
 fun NavGraphBuilder.characterDetailsRoute(
     onBackClick: () -> Unit
 ) {
     composable(
         route = Routes.CharacterDetails.route,
-        arguments = Routes.CharacterDetails.arguments,
-        deepLinks = Routes.CharacterDetails.deepLinks
+        arguments = Routes.CharacterDetails.arguments
     ) {
         val characterId = it.arguments?.getInt(CHARACTER_ID_KEY) ?: 0
 

@@ -1,5 +1,6 @@
 package com.fernanortega.rickandmorty.presentation.characterdetails
 
+import android.content.Context
 import android.content.Intent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -195,24 +196,21 @@ fun CharacterDetailsScreen(
                             )
                         )
                     }
-
                     Text(
                         text = description,
                         style = MaterialTheme.typography.bodyLarge
                     )
                     Spacer(modifier = Modifier.weight(1f))
+
                     val context = LocalContext.current
+
                     Button(
                         modifier = Modifier.fillMaxWidth(),
                         onClick = {
-                            val intent = Intent().apply {
-                                action = Intent.ACTION_SEND
-                                putExtra(Intent.EXTRA_TEXT, uiState.character.url)
-                                type = "text/plain"
-                            }
-                            val shareIntent = Intent.createChooser(intent, null)
-
-                            context.startActivity(shareIntent)
+                            shareCharacter(
+                                context = context,
+                                description = description.text
+                            )
                         }
                     ) {
                         Icon(
@@ -232,6 +230,20 @@ fun CharacterDetailsScreen(
         }
 
     }
+}
+
+fun shareCharacter(
+    context: Context,
+    description: String
+) {
+    val intent = Intent().apply {
+        action = Intent.ACTION_SEND
+        putExtra(Intent.EXTRA_TEXT, description)
+        putExtra(Intent.EXTRA_TITLE, context.getString(R.string.check_out_this_character))
+        type = "text/plain"
+    }
+    val shareIntent = Intent.createChooser(intent, null)
+    context.startActivity(shareIntent)
 }
 
 @Preview
