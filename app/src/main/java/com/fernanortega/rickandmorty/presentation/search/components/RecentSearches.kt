@@ -1,6 +1,7 @@
 package com.fernanortega.rickandmorty.presentation.search.components
 
 import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
@@ -14,6 +15,7 @@ import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.ListItem
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -37,7 +39,7 @@ fun RecentSearches(
 ) {
     if (recentSearches.isEmpty()) {
         EmptyScreen(
-            modifier = modifier,
+            modifier = modifier.padding(vertical = 16.dp),
             text = stringResource(id = R.string.no_recent_searches)
         )
     } else {
@@ -50,6 +52,7 @@ fun RecentSearches(
             ) {
                 Row(
                     modifier = Modifier
+                        .background(MaterialTheme.colorScheme.background)
                         .fillParentMaxWidth()
                         .padding(horizontal = 16.dp),
                     horizontalArrangement = Arrangement.SpaceBetween,
@@ -81,7 +84,10 @@ fun RecentSearches(
                             onClick = {
                                 onSearch(recentSearch.query)
                             },
-                            onClickLabel = stringResource(R.string.search_query, recentSearch.query),
+                            onClickLabel = stringResource(
+                                R.string.search_query,
+                                recentSearch.query
+                            ),
                             role = Role.Button
                         ),
                     headlineContent = {

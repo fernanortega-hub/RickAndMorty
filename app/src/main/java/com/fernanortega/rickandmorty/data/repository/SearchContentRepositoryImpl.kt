@@ -9,6 +9,7 @@ import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 import javax.inject.Singleton
+import kotlin.math.ceil
 
 @Singleton
 class SearchContentRepositoryImpl @Inject constructor(
@@ -25,12 +26,19 @@ class SearchContentRepositoryImpl @Inject constructor(
                     return@withContext Result.success(SearchContent(localData.map { it.toModel() }))
                 }
 
-                val characterResponse = characterService.filterCharactersByName(query)
-                val results = characterResponse.body()?.results?.map {
+                val networkResponse = characterService.filterCharactersByName(query)
+                val networkResults = networkResponse.body()?.results
+
+                val results = networkResults.orEmpty().map {
                     characterDao.insertCharacter(
-                        character = it.toRealmModel()
+                        character = it.toRealmModel().apply {
+                            // Al no tener información sobre la paginación actual de Paging, se puede calcular por el id
+                            // entre el número de elementos que se agregan en la lista (20), ceil es para aproximarlo al
+                            // entero mayor
+                            inPage = ceil((it.id.toFloat() / 20f)).toInt()
+                        }
                     )
-                }.orEmpty()
+                }
 
                 Result.success(SearchContent(results.map { it.toModel() }))
             } catch (e: Exception) {

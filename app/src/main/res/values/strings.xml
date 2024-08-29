@@ -26,4 +26,5 @@
     <string name="has_appeared_in_episodes">Has appeared in %1$s episodes</string>
     <string name="share_character">Share character</string>
     <string name="check_out_this_character">Check out this character</string>
+    <string name="characters_results">Character results</string>
 </resources>

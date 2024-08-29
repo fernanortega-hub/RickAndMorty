@@ -23,4 +23,9 @@ class CharacterDao @Inject constructor(
     ).find()
 
     fun getCharacterById(id: Int): RealmCharacter? = realm.query<RealmCharacter>("id == $0", id).first().find()
+
+    suspend fun deleteAll() = realm.write {
+        val characters = query<RealmCharacter>().find()
+        delete(characters)
+    }
 }
