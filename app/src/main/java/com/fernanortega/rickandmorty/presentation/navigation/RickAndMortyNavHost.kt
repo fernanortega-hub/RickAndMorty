@@ -5,6 +5,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
+import com.fernanortega.rickandmorty.presentation.characterdetails.characterDetailsRoute
 import com.fernanortega.rickandmorty.presentation.feed.feedRoute
 import com.fernanortega.rickandmorty.presentation.search.searchRoute
 
@@ -18,9 +19,16 @@ fun RickAndMortyNavHost(
         navController = navController,
         startDestination = Routes.Feed.route
     ) {
-        feedRoute()
+        feedRoute(
+            onSearchClick = navController::navigateToSearch,
+            onCharacterClick = navController::navigateToCharacterDetails
+        )
         searchRoute(
-            onBack = navController::navigateUp
+            onBackClick = navController::navigateUp,
+            onCharacterClick = navController::navigateToCharacterDetails
+        )
+        characterDetailsRoute(
+            onBackClick = navController::navigateUp
         )
     }
 }

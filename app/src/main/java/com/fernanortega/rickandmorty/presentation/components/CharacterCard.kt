@@ -14,9 +14,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.drawWithContent
-import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -25,15 +22,18 @@ import com.fernanortega.rickandmorty.R
 import com.fernanortega.rickandmorty.domain.model.Character
 import com.fernanortega.rickandmorty.domain.model.LocationCharacter
 import com.fernanortega.rickandmorty.domain.model.OriginCharacter
+import com.fernanortega.rickandmorty.ui.modifiers.statusDot
 import com.fernanortega.rickandmorty.ui.theme.RickAndMortyTheme
 
 @Composable
 fun CharacterCard(
     modifier: Modifier = Modifier,
-    character: Character
+    character: Character,
+    onClick: () -> Unit
 ) {
     OutlinedCard(
-        modifier = modifier
+        modifier = modifier,
+        onClick = onClick
     ) {
         Box(
             modifier = Modifier.fillMaxWidth()
@@ -77,7 +77,7 @@ fun CharacterCard(
             }
             Text(
                 text = stringResource(
-                    R.string.first_appeared_in_and_last_known_location_is,
+                    R.string.origin_in_and_last_known_location_is,
                     character.name,
                     character.origin.name,
                     character.location.name
@@ -85,26 +85,14 @@ fun CharacterCard(
             )
 
             Text(
-                text = stringResource(R.string.appears_in_episodes, character.episode.size)
+                text = if (character.episode.size == 1) {
+                    stringResource(R.string.has_appeared_in_episode, character.episode.size)
+                } else {
+                    stringResource(R.string.has_appeared_in_episodes, character.episode.size)
+                }
             )
         }
     }
-}
-
-private fun Modifier.statusDot(status: String): Modifier = this then drawWithContent {
-    drawContent()
-    drawCircle(
-        color = when (status) {
-            "Alive" -> Color(0xFF19F500)
-            "Dead" -> Color(0xFFFE4A49)
-            else -> Color.Gray
-        },
-        radius = size.minDimension / 4,
-        center = Offset(
-            x = -12.dp.toPx(),
-            y = size.height / 2
-        )
-    )
 }
 
 @Preview
@@ -131,6 +119,7 @@ private fun CharacterCardPreview() {
                 episode = listOf(),
                 url = ""
             ),
+            onClick = {}
         )
     }
 }

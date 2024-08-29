@@ -3,8 +3,7 @@
     <string name="no_data">No data</string>
     <string name="no_characters_found">No characters found</string>
     <string name="image_of_character">Image of %1$s</string>
-    <string name="appears_in_episodes">Appears in %1$s episodes</string>
-    <string name="first_appeared_in_and_last_known_location_is">%1$s first appeared in %2$s and last known location is %3$s.</string>
+    <string name="origin_in_and_last_known_location_is">%1$s origin is %2$s and last known location is %3$s.</string>
     <string name="back">Back</string>
     <string name="search_characters_locations_or_episodes">Search characters, locations or episodes</string>
     <string name="activate_search_bar">Activate search bar</string>
@@ -15,4 +14,15 @@
     <string name="clear_recent_searches">Clear recent searches</string>
     <string name="no_recent_searches">No recent searches</string>
     <string name="loading">Loading</string>
+    <string name="this_character_is">This character is %1$s</string>
+    <string name="who_is_currently_status">who is currently %1$s.</string>
+    <string name="a_type_who_is_currently_status">a %1$s who is currently %2$s.</string>
+    <string name="is_known_for_being_a_of_the_species">%1$s is known for being a %2$s of the %3$s species.</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="is_known_for_being_a_genderless_species">%1$s is known for being a genderless %2$s</string>
+    <string name="gender_is_unknown_of_the_species">%1$s\'s gender is unknown, of the %2$s species.</string>
+    <string name="has_appeared_in_episode">Has appeared in %1$s episode</string>
+    <string name="has_appeared_in_episodes">Has appeared in %1$s episodes</string>
+    <string name="share_character">Share character</string>
 </resources>

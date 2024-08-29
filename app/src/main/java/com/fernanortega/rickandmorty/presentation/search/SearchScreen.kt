@@ -43,7 +43,8 @@ fun SearchScreen(
     onBack: () -> Unit,
     onQueryChange: (String) -> Unit,
     onExplicitlySearch: (String) -> Unit,
-    clearRecentSearches: () -> Unit
+    clearRecentSearches: () -> Unit,
+    onCharacterClick: (Int) -> Unit
 ) {
     Column(
         modifier = modifier
@@ -107,7 +108,8 @@ fun SearchScreen(
                     modifier = Modifier
                         .weight(1f)
                         .fillMaxWidth()
-                        .imePadding()
+                        .imePadding(),
+                    onCharacterClick = onCharacterClick
                 )
             }
         }
@@ -128,7 +130,8 @@ fun SearchScreen(
                 modifier = Modifier
                     .weight(1f)
                     .fillMaxWidth()
-                    .imePadding()
+                    .imePadding(),
+                onCharacterClick = onCharacterClick
             )
         }
     }
@@ -137,7 +140,8 @@ fun SearchScreen(
 @Composable
 fun CharacterResults(
     modifier: Modifier = Modifier,
-    characters: List<Character>
+    characters: List<Character>,
+    onCharacterClick: (Int) -> Unit
 ) {
     LazyVerticalStaggeredGrid(
         modifier = modifier,
@@ -151,7 +155,8 @@ fun CharacterResults(
             key = { character -> character.id }
         ) { character ->
             CharacterCard(
-                character = character
+                character = character,
+                onClick = { onCharacterClick(character.id) }
             )
         }
     }
@@ -168,7 +173,8 @@ private fun SearchScreenPreview() {
             onBack = {},
             onQueryChange = {},
             onExplicitlySearch = {},
-            clearRecentSearches = {}
+            clearRecentSearches = {},
+            onCharacterClick = {}
         )
     }
 }

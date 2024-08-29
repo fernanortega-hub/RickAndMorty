@@ -21,4 +21,6 @@ class CharacterDao @Inject constructor(
     fun getCharactersAtPage(page: Int): RealmResults<RealmCharacter> = realm.query<RealmCharacter>(
         "inPage == $0", page
     ).find()
+
+    fun getCharacterById(id: Int): RealmCharacter? = realm.query<RealmCharacter>("id == $0", id).first().find()
 }
