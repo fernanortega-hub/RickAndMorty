@@ -7,7 +7,10 @@ data class SearchUiState(
     val searchQuery: String = "",
     val isSearching: Boolean = false,
     val recentSearches: List<RecentSearch> = emptyList(),
-    val characters: List<Character> = emptyList(),
+    val searchContent: SearchContent = SearchContent(
+        characters = emptyList()
+    ),
+    val error: String? = null
 //    val locations: List<Location> = emptyList(),
 //    val episodes: List<Episode> = emptyList()
 )

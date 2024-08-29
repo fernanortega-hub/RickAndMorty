@@ -2,12 +2,15 @@ package com.fernanortega.rickandmorty.presentation.search
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.basicMarquee
-import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.imePadding
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.staggeredgrid.LazyVerticalStaggeredGrid
+import androidx.compose.foundation.lazy.staggeredgrid.StaggeredGridCells
+import androidx.compose.foundation.lazy.staggeredgrid.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.rounded.ArrowBack
 import androidx.compose.material.icons.rounded.Clear
@@ -27,6 +30,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.fernanortega.rickandmorty.R
+import com.fernanortega.rickandmorty.domain.model.Character
+import com.fernanortega.rickandmorty.presentation.feed.components.CharacterCard
 import com.fernanortega.rickandmorty.presentation.search.components.RecentSearches
 import com.fernanortega.rickandmorty.ui.theme.RickAndMortyTheme
 
@@ -86,24 +91,67 @@ fun SearchScreen(
                 }
             }
         ) {
+            if (uiState.searchContent.characters.isEmpty()) {
+                RecentSearches(
+                    recentSearches = uiState.recentSearches,
+                    clearRecentSearches = clearRecentSearches,
+                    onSearch = onQueryChange,
+                    modifier = Modifier
+                        .weight(1f)
+                        .fillMaxWidth()
+                        .imePadding()
+                )
+            } else {
+                CharacterResults(
+                    characters = uiState.searchContent.characters,
+                    modifier = Modifier
+                        .weight(1f)
+                        .fillMaxWidth()
+                        .imePadding()
+                )
+            }
+        }
+
+        if (!active && uiState.searchContent.characters.isEmpty()) {
             RecentSearches(
                 recentSearches = uiState.recentSearches,
                 clearRecentSearches = clearRecentSearches,
                 onSearch = onQueryChange,
+                modifier = Modifier
+                    .weight(1f)
+            )
+        }
+
+        if (uiState.searchContent.characters.isNotEmpty()) {
+            CharacterResults(
+                characters = uiState.searchContent.characters,
                 modifier = Modifier
                     .weight(1f)
                     .fillMaxWidth()
                     .imePadding()
             )
         }
+    }
+}
 
-        if (!active) {
-            RecentSearches(
-                recentSearches = uiState.recentSearches,
-                clearRecentSearches = clearRecentSearches,
-                onSearch = onQueryChange,
-                modifier = Modifier
-                    .weight(1f)
+@Composable
+fun CharacterResults(
+    modifier: Modifier = Modifier,
+    characters: List<Character>
+) {
+    LazyVerticalStaggeredGrid(
+        modifier = modifier,
+        contentPadding = PaddingValues(16.dp),
+        columns = StaggeredGridCells.Adaptive(300.dp),
+        verticalItemSpacing = 12.dp,
+        horizontalArrangement = Arrangement.spacedBy(12.dp)
+    ) {
+        items(
+            items = characters,
+            key = { character -> character.id }
+        ) { character ->
+            CharacterCard(
+                character = character
             )
         }
     }

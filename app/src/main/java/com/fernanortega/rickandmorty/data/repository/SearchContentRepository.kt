@@ -4,6 +4,5 @@ import com.fernanortega.rickandmorty.domain.model.SearchContent
 import kotlinx.coroutines.flow.Flow
 
 interface SearchContentRepository {
-    fun getSearchContents(query: String): Flow<SearchContent>
-    suspend fun querySearchInNetwork(query: String): Result<Unit>
+    suspend fun getSearchContents(query: String): Result<SearchContent>
 }
