@@ -12,7 +12,20 @@ import coil.compose.AsyncImage
 import coil.imageLoader
 import coil.request.ImageRequest
 import com.fernanortega.rickandmorty.R
+import com.fernanortega.rickandmorty.RickAndMortyApplication
+import coil.ImageLoader
+import androidx.compose.ui.tooling.preview.Preview
 
+/**
+ * Componente para mostrar una imagen a partir de una url con Coil, imagen que puede ser
+ * cacheada por el [ImageLoader] en [RickAndMortyApplication]
+ * @param modifier modificador para personalizar el componente
+ * @param imageUrl url de la imagen a mostrar
+ * @param contentDescription texto descriptivo de la imagen
+ * @param crossFade si la imagen debe animarse al cargarla
+ * @param contentScale escala del contenido de la imagen
+ * @param placeHolder imagen a mostrar mientras se carga la otra, encuentra un error o si se encuentra en un [Preview]
+ */
 @Composable
 fun DynamicImage(
     modifier: Modifier = Modifier,

@@ -14,6 +14,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import com.fernanortega.rickandmorty.R
 
+/**
+ * Composable para la barra de navegación superior de la aplicación.
+ * @param modifier modificador para personalizar el diseño
+ * @param title título de la barra de navegación
+ * @param onNavigationClick acción a realizar al hacer clic en el botón de navegación (si se pasa null, no mostrará el botón)
+ * @param actions acciones adicionales a mostrar en la barra de navegación (por defecto, no muestra nada)
+ */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun RickAndMortyTopAppBar(

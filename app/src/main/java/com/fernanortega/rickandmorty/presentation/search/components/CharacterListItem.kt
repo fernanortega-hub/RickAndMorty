@@ -18,7 +18,15 @@ import com.fernanortega.rickandmorty.domain.model.LocationCharacter
 import com.fernanortega.rickandmorty.domain.model.OriginCharacter
 import com.fernanortega.rickandmorty.presentation.components.DynamicImage
 import com.fernanortega.rickandmorty.ui.theme.RickAndMortyTheme
+import com.fernanortega.rickandmorty.presentation.search.SearchScreen
 
+/**
+ * Componente para mostrar un elemento de una lista de personajes de Rick and Morty.\n\n
+ * > Esta diseñado para su uso en toda la app, pero se reserva principalmente para [SearchScreen],
+ * @param modifier modificador para personalizar el diseño
+ * @param character personaje a mostrar
+ * @param onClick acción a realizar al hacer clic en el elemento
+ */
 @Composable
 fun CharacterListItem(
     modifier: Modifier = Modifier,

@@ -18,6 +18,13 @@ import androidx.compose.ui.unit.dp
 import com.fernanortega.rickandmorty.R
 import com.fernanortega.rickandmorty.domain.model.Character
 
+/**
+ * Composable para mostrar los resultados de búsqueda de personajes.
+ * > Nota: No maneja una lista vacia
+ * @param modifier modificador para personalizar el diseño
+ * @param characters lista de personajes a mostrar
+ * @param onCharacterClick acción a realizar al hacer clic en un personaje
+ */
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun CharacterResults(

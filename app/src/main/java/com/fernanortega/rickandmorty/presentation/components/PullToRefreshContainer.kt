@@ -11,6 +11,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 
+/**
+ * Contenedor para uso de funcionalidad de pull to refresh donde sea necesario
+ * @param modifier modificador para el contenedor
+ * @param isRefreshing indica si se está realizando el refresh
+ * @param onRefresh acción a realizar cuando se realiza el refresh
+ * @param content contenido a mostrar
+ */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun PullToRefreshContainer(

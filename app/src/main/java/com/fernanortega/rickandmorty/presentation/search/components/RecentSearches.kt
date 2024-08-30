@@ -29,6 +29,15 @@ import com.fernanortega.rickandmorty.domain.model.RecentSearch
 import com.fernanortega.rickandmorty.presentation.components.EmptyScreen
 import com.fernanortega.rickandmorty.ui.theme.RickAndMortyTheme
 
+/**
+ * Composable para mostrar una lista de búsquedas recientes.
+ * Si no tiene búsquedas recientes, muestra un mensaje de que no hay.
+ *
+ * @param modifier modificador para personalizar el diseño
+ * @param recentSearches lista de búsquedas recientes a mostrar
+ * @param clearRecentSearches acción a realizar al hacer clic en el botón de limpiar
+ * @param onSearch acción a realizar al hacer clic en una búsqueda y realizar la búsqueda
+ */
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun RecentSearches(

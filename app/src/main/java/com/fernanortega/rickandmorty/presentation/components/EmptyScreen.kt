@@ -9,6 +9,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import com.fernanortega.rickandmorty.R
 
+/**
+ * Muestra un mensaje de que no hay datos disponibles o personalizable según necesidad
+ * @param modifier modificador para personalizar el componente
+ * @param text texto a mostrar
+ */
 @Composable
 fun EmptyScreen(
     modifier: Modifier = Modifier,

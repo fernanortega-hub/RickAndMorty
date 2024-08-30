@@ -9,6 +9,10 @@ import coil.request.CachePolicy
 import coil.util.DebugLogger
 import dagger.hilt.android.HiltAndroidApp
 
+/**
+ * A parte de hacer la función de la clase [Application], se aplica la interface de [ImageLoaderFactory]
+ * para hacer uso de cache de imágenes de Coil y manteniendo una instancia singleton automática de [ImageLoader]
+ */
 @HiltAndroidApp
 class RickAndMortyApplication: Application(), ImageLoaderFactory {
     override fun newImageLoader(): ImageLoader {

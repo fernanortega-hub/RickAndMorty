@@ -5,6 +5,13 @@ import androidx.navigation.NavType
 import androidx.navigation.navArgument
 import com.fernanortega.rickandmorty.presentation.characterdetails.CHARACTER_ID_KEY
 
+/**
+ * Lista de rutas de navegación de la aplicación.
+ * Cada subclase u objeto representa una ruta de navegación, con su respectiva ruta y argumentos.
+ *
+ * @property route ruta de navegación (única)
+ * @property arguments posibles argumentos de navegación
+ */
 sealed class Routes(
     val route: String,
     val arguments: List<NamedNavArgument> = emptyList()
@@ -22,6 +29,9 @@ sealed class Routes(
             }
         )
     ) {
+        /**
+         * Crea la ruta de navegación para el detalle de un personaje.
+         */
         fun createRoute(characterId: Int) = "characterDetails/$characterId"
     }
 }

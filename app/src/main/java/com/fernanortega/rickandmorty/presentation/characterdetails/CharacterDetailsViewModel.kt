@@ -21,7 +21,12 @@ class CharacterDetailsViewModel @Inject constructor(
     private val _uiState: MutableStateFlow<CharacterDetailsUiState> = MutableStateFlow(CharacterDetailsUiState())
     val uiState: StateFlow<CharacterDetailsUiState> = _uiState.asStateFlow()
 
+    /**
+     * Actualiza el id del personaje con el argumento pasado en la navegación y lo obtiene de la base de datos o desde la api
+     */
     fun updateCharacterId(characterId: Int) {
+        // Se guarda el id del personaje en el savedStateHandle para mantenerlo
+        // en ciertos escenarios donde la app pueda ser detenida forzadamente por el sistema
         savedStateHandle[CHARACTER_ID_SAVED_STATE_KEY] = characterId
         getCharacterById()
     }

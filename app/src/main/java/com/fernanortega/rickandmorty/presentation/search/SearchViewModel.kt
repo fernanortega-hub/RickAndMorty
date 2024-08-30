@@ -51,19 +51,27 @@ class SearchViewModel @Inject constructor(
 
 
     private var searchJob: Job? = null
+
+    /**
+     * Función que realizará la búsqueda de los personajes con el [query] dado
+     */
     fun onSearchQueryChange(query: String) {
         savedStateHandle[SEARCH_QUERY] = query
+        // Si la query es menor a 2 caracteres, no se hace la busqueda para evitar posibles requests innecesarias
         if (query.length >= 2) {
+            // Si se tiene un job en curso, se cancela para cancelar la busqueda anterior
             searchJob?.cancel()
             viewModelScope.launch {
-                _uiState.update { state -> state.copy(isSearching = true) }
+                // delay que funciona como debounce para no hacer una busqueda cada vez que se escribe un caracter
                 delay(250)
+                _uiState.update { state -> state.copy(isSearching = true) }
                 getSearchContentUseCase(query)
                     .onSuccess {
                         _uiState.update { state -> state.copy(searchContent = it) }
                     }
                     .onFailure {
                         if (it is BackendException) {
+                            // En el caso de esta excepción, se muestra un mensaje al usuario y se actualiza la lista con una vacia
                             _uiState.update { state ->
                                 state.copy(
                                     searchContent = SearchContent(
@@ -81,6 +89,9 @@ class SearchViewModel @Inject constructor(
         }
     }
 
+    /**
+     * Esta función guardará la [searchQuery] en la base de datos y luego la usará [onSearchQueryChange]
+     */
     fun onExplicitlySearch(searchQuery: String) {
         onSearchQueryChange(searchQuery)
         viewModelScope.launch {
@@ -88,6 +99,9 @@ class SearchViewModel @Inject constructor(
         }
     }
 
+    /**
+     * Elimina todas las búsquedas recientes de la base de datos
+     */
     fun clearRecentSearches() {
         viewModelScope.launch {
             clearRecentSearchesUseCase()

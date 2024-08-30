@@ -28,4 +28,7 @@
     <string name="check_out_this_character">Check out this character!</string>
     <string name="characters_results">Character results</string>
     <string name="for_you_search">For you search</string>
+    <string name="alive">Alive</string>
+    <string name="dead">Dead</string>
+    <string name="unknown">unknown status</string>
 </resources>

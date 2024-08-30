@@ -13,6 +13,9 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.fernanortega.rickandmorty.R
 
+/**
+ * Muestra un mensaje de que no se encontraron personajes con el [query] dado.
+ */
 @Composable
 fun NoCharactersFound(
     modifier: Modifier = Modifier,

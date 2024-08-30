@@ -25,7 +25,13 @@ import com.fernanortega.rickandmorty.domain.model.OriginCharacter
 import com.fernanortega.rickandmorty.presentation.components.DynamicImage
 import com.fernanortega.rickandmorty.ui.modifiers.statusDot
 import com.fernanortega.rickandmorty.ui.theme.RickAndMortyTheme
+import com.fernanortega.rickandmorty.presentation.feed.FeedScreen
 
+/**
+ * Componente para mostrar una tarjeta de un personaje de Rick and Morty.
+ * > Diseñada para ser reutilizable en diferentes partes de la interfaz de usuario.
+ * > Pero su principal uso es en [FeedScreen].
+ */
 @Composable
 fun CharacterCard(
     modifier: Modifier = Modifier,

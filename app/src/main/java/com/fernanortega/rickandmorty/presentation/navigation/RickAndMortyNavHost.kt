@@ -19,6 +19,10 @@ fun RickAndMortyNavHost(
         navController = navController,
         startDestination = Routes.Feed.route
     ) {
+        /*
+        Se realizan extensiones de NavGraphBuilder para crear las rutas de navegación y mantener este archivo
+        limpio de instancias de viewModel y ayuda a hacerlo más corto y legible
+         */
         feedRoute(
             onSearchClick = navController::navigateToSearch,
             onCharacterClick = navController::navigateToCharacterDetails

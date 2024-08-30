@@ -27,4 +27,7 @@
     <string name="check_out_this_character">¡Mira este personaje de Rick and Morty!</string>
     <string name="characters_results">Resultados de personajes</string>
     <string name="for_you_search">En tu búsqueda de </string>
+    <string name="alive">Vivo(a)</string>
+    <string name="dead">Muerto(a)</string>
+    <string name="unknown">Estado desconocido(a)</string>
 </resources>

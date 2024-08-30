@@ -14,6 +14,12 @@ import javax.inject.Inject
 class FeedViewModel @Inject constructor(
     getAllCharactersUseCase: GetAllCharactersUseCase,
 ) : ViewModel() {
+    /**
+     * Flow de [PagingData] de [Character] que se obtiene de [GetAllCharactersUseCase],
+     * Se usa cachedIn para evitar memory leaks y posible crash
+     * El stateIn se usa para siempre tener un flow de datos corriendo hasta 5 segundos después de su
+     * último collector (en este caso las vistas de Feed)
+     */
     val charactersPaging = getAllCharactersUseCase()
         .cachedIn(viewModelScope)
         .stateIn(
