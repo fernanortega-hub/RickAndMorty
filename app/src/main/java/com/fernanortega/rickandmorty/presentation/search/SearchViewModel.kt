@@ -62,9 +62,9 @@ class SearchViewModel @Inject constructor(
             // Si se tiene un job en curso, se cancela para cancelar la busqueda anterior
             searchJob?.cancel()
             viewModelScope.launch {
+                _uiState.update { state -> state.copy(isSearching = true) }
                 // delay que funciona como debounce para no hacer una busqueda cada vez que se escribe un caracter
                 delay(250)
-                _uiState.update { state -> state.copy(isSearching = true) }
                 getSearchContentUseCase(query)
                     .onSuccess {
                         _uiState.update { state -> state.copy(searchContent = it) }
@@ -82,10 +82,11 @@ class SearchViewModel @Inject constructor(
                         }
                         _uiState.update { state -> state.copy(error = it.message) }
                     }
+                _uiState.update { state -> state.copy(isSearching = false) }
             }.also {
                 searchJob = it
-                _uiState.update { state -> state.copy(isSearching = false) }
             }
+
         }
     }
 
