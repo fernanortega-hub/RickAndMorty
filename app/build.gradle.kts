@@ -89,7 +89,6 @@ dependencies {
     implementation(libs.androidx.lifecycle.runtime.compose)
 
     implementation(libs.kotlinx.serialization.json)
-    implementation(libs.kotlinx.datetime)
 
     implementation(libs.google.dagger.hilt.android)
     ksp(libs.google.dagger.hilt.compiler)
