@@ -37,4 +37,6 @@ Ambos temas funcionan en dark y light mode, toda la UI fue hecha con Jetpack Com
 # Soluciones
 - Para el desarrollo de esta app se utiliza programación reactiva y asíncrona con ayuda de [Flow](https://kotlinlang.org/docs/flow.html) y [Coroutines](https://kotlinlang.org/docs/coroutines-basics.html) de Kotlin.
 - Dicha implementación ayuda a mantener una arquitectura limpia y unidireccional consumiendo datos remotos con ayuda de [Retrofit](https://github.com/square/retrofit) y almacenarlos y usar como datos sin conexión por medio de [Realm](https://github.com/realm/realm-kotlin). 
-- La API de Rick And Morty implementa paginación para prácticamente todos sus endpoints, para ello, se decide implementar [Paging](https://developer.android.com/jetpack/androidx/releases/paging), al mismo tiempo, facilitamos el desarrollo de una implementación personalizada de dicha paginación y damos como resultado un _infinity scroll_ para una mejor experiencia de usuario en el Feed de la app.
+- La API de Rick And Morty implementa paginación para prácticamente todos sus endpoints, para ello, se decide implementar [Paging](https://developer.android.com/jetpack/androidx/releases/paging), con lo que facilitamos el desarrollo de una implementación personalizada para una paginación y un _infinity scroll_
+
+Las tecnologías utilizadas en este proyecto, se deciden por su rápida y confiable implementación, obteniendo como resultado una mejor experiencia de desarrollador y usuario.
